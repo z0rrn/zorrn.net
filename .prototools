@@ -1,0 +1,4 @@
+zola = "0.18.0"
+
+[plugins]
+zola = "source:https://raw.githubusercontent.com/z0rrn/proto-plugins/main/zola/plugin.toml"
