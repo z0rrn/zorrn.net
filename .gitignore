@@ -1,0 +1,11 @@
+# Bun/NodeJS dependencies
+node_modules/
+
+# Zola
+# static site output
+public/
+public.min/
+# processed image files
+static/processed_images/
+# generated css higlight themes
+static/syntax-theme-base16-ocean-dark.css

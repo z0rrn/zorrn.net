@@ -1,16 +1,77 @@
-# The URL the site will be built for
-base_url = "https://www.zorrn.net/"
+title = "Frederik's Blog"
+# !! Set same value down under extra and in Justfile otherwise it has no effect !!
+base_url = "https://www.zorrn.net"
+description = "Frederik Zorn's blog and nonsense site"
 
-# Whether to automatically compile all Sass files in the sass directory
+# Specify theme (name the directory under ./themes/)
+#theme = "duckquill"
+
 compile_sass = true
-
-# Whether to build a search index to be used later on by a JavaScript library
+#minify_html = true
+generate_feed = true
+feed_filename = "atom.xml"
 build_search_index = true
+
+# Default author name
+author = "Frederik Zorn"
+
+# Categories to be specified in the TOML front matter
+taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+highlight_theme = "css"
+highlight_themes_css = [
+    { theme = "base16-ocean-dark", filename = "syntax-theme-base16-ocean-dark.css" },
+]
 
 [extra]
 # Put all your custom variables here
+keywords = "zorrn, z0rrn, blog, programming, projects, personal"
+
+# Default URL copied from above to get valid canonical URLs
+base_url = "https://www.zorrn.net"
+
+# Variables used by Duckquill Theme (https://codeberg.org/daudix/duckquill) by David Lapshin
+
+# See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+# !! Set same values in style.scss otherwise it has no effect !!
+primary_color = "#629292"
+# Same as primary_color, but with 20% opacity
+primary_color_alpha = "rgba(98, 146, 146, 0.2)"
+
+# Tera Date format used when listing posts
+# (post publication date, tag posts list...).
+# Not used in comments.
+# See https://docs.rs/chrono/0.4.31/chrono/format/strftime/index.html
+date_format = "%d %B %Y"
+
+# Issue tracker and source code URL
+#issues_url = ""
+#source_url = ""
+
+[extra.nav]
+# Whether to show Atom/RSS feed button in the nav
+show_feed = true
+
+# Links used in the nav.
+# For local files use same link format as in Markdown,
+# i.e "@/blog/_index.md".
+# See https://www.getzola.org/documentation/content/linking/#internal-links
+links = [
+    { url = "@/blog/_index.md", name = "Blog" },
+    { url = "@/projects/index.md", name = "Projects" },
+    { url = "@/tech/index.md", name = "Tech" },
+]
+
+[extra.footer]
+# Copyright format: "© {year} {author}"
+show_copyright = true
+# crazy makreting via "john"
+show_johnvert = false
+# Credits to Zola and Duckquill
+show_powered_by = true
+# Link to Website source code
+show_source = false
