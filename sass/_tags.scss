@@ -1,0 +1,35 @@
+.tags {
+    display: inline-block;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: inline-block;
+        transition: var(--transition);
+        margin: 0 0.25rem 0.5rem 0;
+
+        &:active {
+            transform: scale(var(--active));
+        }
+    }
+
+    .tag {
+        transition: var(--transition);
+        box-shadow: var(--edge-highlight);
+        border-radius: 999px;
+        background-color: var(--fg-muted-1);
+        padding: 0.25rem 0.75rem;
+        color: var(--fg-color);
+        text-decoration: none;
+
+        &:hover {
+            background-color: var(--primary-color-alpha);
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        &::before {
+            content: "#";
+        }
+    }
+}

@@ -1,0 +1,98 @@
+#site-nav {
+    -webkit-backdrop-filter: var(--blur);
+    position: sticky;
+    top: 1rem;
+    z-index: 999;
+    backdrop-filter: var(--blur);
+    margin: 1rem auto;
+    box-shadow:
+        var(--edge-highlight),
+        0px 12px 24px -16px rgba(0, 0, 0, 0.5);
+    border-radius: 26px;
+    background-color: var(--nav-bg);
+    max-width: min(calc(var(--content-width) + 10rem), 90%);
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.25rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-flex;
+            list-style: none;
+        }
+
+        a {
+            transition: var(--transition);
+            border-radius: 999px;
+            padding: 0.325rem 0.75rem;
+            color: var(--fg-muted-4);
+            text-decoration: none;
+
+            &:hover {
+                box-shadow: var(--edge-highlight);
+                background-color: var(--fg-muted-1);
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+
+            &:active {
+                transform: scale(var(--active));
+            }
+        }
+
+        #main-content {
+            position: absolute;
+            transform: translateY(-300%);
+            z-index: 999;
+            background: var(--bg-color);
+
+            &:focus {
+                transform: translateY(0);
+            }
+        }
+
+        #home {
+            position: relative;
+            margin-right: 0.625rem;
+
+            &::after {
+                position: absolute;
+                top: 0;
+                right: -0.5rem;
+                background-color: var(--fg-muted-2);
+                width: 1px;
+                height: 110%;
+                content: "";
+            }
+
+            a {
+                color: var(--fg-muted-5);
+                font-weight: 800;
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        #feed a {
+            padding: 0.325rem 0.625rem;
+
+            svg {
+                vertical-align: -0.125em;
+            }
+        }
+    }
+}

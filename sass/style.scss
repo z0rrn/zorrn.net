@@ -1,0 +1,30 @@
+/*!
+ * Duckquill v1.1.0 (https://daudix.codeberg.page/duckquill)
+ * Copyright 2024 David "Daudix" Lapshin
+ * Licensed under MIT (https://codeberg.org/daudix/duckquill/src/branch/main/LICENSE)
+ */
+
+@use "normalize";
+
+@use "variables";
+@use "main";
+
+@use "blog-list";
+@use "buttons";
+// @use "comments";
+@use "crt";
+@use "footer";
+// @use "johnvertisement";
+@use "links";
+@use "media";
+@use "nav";
+@use "not-found";
+@use "post-nav";
+@use "statements";
+@use "tags";
+
+/* Reset colors from config.toml, otherwise not used */
+:root {
+    --primary-color-alpha: rgba(98, 146, 146, 0.2);
+    --primary-color: #629292;
+}

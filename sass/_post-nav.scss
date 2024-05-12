@@ -1,0 +1,34 @@
+#post-nav {
+    display: flex;
+
+    .post-nav-item {
+        width: 50%;
+        text-decoration: none;
+
+        &:hover .post-title {
+            color: var(--primary-color);
+        }
+
+        &:nth-child(2n + 1) {
+            padding-right: 1rem;
+            padding-left: 0;
+        }
+
+        &:nth-child(2n) {
+            padding-right: 0;
+            padding-left: 1rem;
+            text-align: right;
+        }
+
+        .nav-arrow {
+            margin-bottom: 0.5rem;
+            color: var(--fg-muted-5);
+            font-weight: normal;
+        }
+
+        .post-title {
+            transition: var(--transition);
+            color: var(--fg-color);
+        }
+    }
+}

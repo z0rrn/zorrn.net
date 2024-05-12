@@ -1,0 +1,41 @@
+.blog-list {
+    article {
+        position: relative;
+
+        &.draft {
+            outline: 2px dashed var(--fg-muted-2);
+            outline-offset: 0.5rem;
+            border-radius: 1rem;
+        }
+
+        .draft-badge,
+        .archive-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: var(--transition);
+            box-shadow: var(--edge-highlight);
+            border-radius: 999px;
+            padding: 0.25rem 0.75rem;
+            font-weight: bold;
+
+            svg {
+                vertical-align: -0.125em;
+            }
+        }
+
+        .draft-badge {
+            background-color: var(--fg-muted-1);
+            color: var(--fg-muted-4);
+        }
+
+        .archive-badge {
+            background-color: var(--purple-bg);
+            color: var(--purple-fg);
+        }
+    }
+
+    hr:last-of-type {
+        display: none;
+    }
+}
