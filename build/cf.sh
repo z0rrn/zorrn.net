@@ -5,8 +5,8 @@ set -euo pipefail
 
 # Install Proto and tools
 curl -fsSL https://moonrepo.dev/install/proto.sh | bash -s -- --yes
-source ~/.bashrc # Reload bashrc to use `proto` command
+source ~/.bash_profile # Reload bash to use `proto` command
 proto use
 
 # Run build script
-just cf
+just prod
