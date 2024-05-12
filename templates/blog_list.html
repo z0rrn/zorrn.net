@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ section.title }}</h1>
+
+<p>{{ section.description }}</p>
+
+<small>
+    <a class="link-page" href="{{ get_url(path='tags') }}">Filter by tag</a>
+    <br />
+    From newest to oldest ↓
+</small>
+
+<div class="blog-list">
+    {% for page in section.pages %}
+    <article {% if page.draft %}class="draft" {% endif %}>
+        <h3>
+            <a class="link-page" href="{{ page.permalink | safe }}"
+                >{{ page.title }}</a
+            >
+        </h3>
+        {%- if page.draft %}
+        <span class="draft-badge">
+            <svg
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                height="16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M12.277.832c-.578.008-1.168.23-1.691.754l-9 9A2 2 0 0 0 1 12v3h3c.531 0 1.04-.21 1.414-.586l9-9c1.79-1.789.082-4.39-1.89-4.57-.083-.012-.165-.012-.247-.012M10.5 4.437 11.563 5.5 4.5 12.563 3.438 11.5zm0 0"
+                />
+            </svg>
+            Drafted
+        </span>
+        {%- endif %} {%- if page.extra.archive %}
+        <span class="archive-badge">
+            <svg
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                height="16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M4 1a1 1 0 0 0-.926.625l-2 5A1 1 0 0 0 1 7v7s0 2 2 2h10s2 0 2-2l.004-6.937c0-.149-.004-.297-.074-.438l-2-5A1 1 0 0 0 12 1zm.676 2h6.644l1.203 3h-9.05zM7 8h2v3h2a1 1 0 0 1-.293.707l-2 2a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1-.285-.7L5 11h2zm0 0"
+                />
+            </svg>
+            Archived
+        </span>
+        {%- endif %} {%- if page.description %}
+        <p>{{ page.description }}</p>
+        {%- endif %} {%- if page.date %}
+        <small>
+            <time datetime="{{ page.date | date(format='%+') }}" pubdate
+                >{{- page.date | date(format=config.extra.date_format) -}}</time
+            >
+            {%- if page.authors %}
+            <span>•</span>
+            <span>Author: {{ page.authors[0] }}</span>
+            {%- endif %} {%- if page.taxonomies %} {%- for name, taxon in
+            page.taxonomies %}
+            <span>•</span>
+            <ul class="tags">
+                {%-for item in taxon %}
+                <li>
+                    <a
+                        class="tag"
+                        href="{{ get_taxonomy_url(kind=name, name=item) }}"
+                        >{{ item }}</a
+                    >
+                </li>
+                {%- endfor %}
+            </ul>
+            {%- endfor %} {%- endif %}
+        </small>
+        {%- endif %}
+    </article>
+    <hr />
+    {% endfor %}
+</div>
+{% endblock content %}

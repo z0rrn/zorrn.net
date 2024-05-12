@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<picture>
+    <source
+        srcset="{{ get_url(path='404.png') }}"
+        media="(prefers-reduced-motion: reduce)"
+    />
+    <img
+        id="not-found"
+        class="pixels transparent no-hover"
+        srcset="{{ get_url(path='404.gif') }}"
+    />
+</picture>
+
+<h1>Page Not Found</h1>
+
+{% if config.extra.issues_url %}
+<p>
+    The requested page could not be found. If you feel this is not normal, then
+    you can create an issue on the issue tracker.
+</p>
+{% else %}
+<p>
+    The requested page could not be found. If you feel this is not normal,
+    please email me.
+</p>
+{% endif %}
+
+<p class="dialog-buttons">
+    <a class="inline-button" href="{{ get_url(path='/') }}">Go Home</a>
+    {% if config.extra.issues_url %}
+    <a class="inline-button colored" href="{{ config.extra.issues_url }}"
+        >File an Issue</a
+    >
+    {% endif %}
+</p>
+{% endblock content %}

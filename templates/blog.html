@@ -1,0 +1,124 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ page.title }}</h1>
+
+{%- if page.date %}
+<small>
+    <time datetime="{{ page.date | date(format=' %+') }}" pubdate>
+        {{- page.date | date(format=config.extra.date_format) -}}
+    </time>
+    {%- if page.authors %}
+    <span>•</span>
+    <span>Author: {{ page.authors[0] }}</span>
+    {%- endif %} {%- if page.taxonomies %} {%- for name, taxon in
+    page.taxonomies %}
+    <span>•</span>
+    <ul class="tags">
+        {%-for item in taxon %}
+        <li>
+            <a class="tag" href="{{ get_taxonomy_url(kind=name, name=item) }}"
+                >{{ item }}</a
+            >
+        </li>
+        {%- endfor %}
+    </ul>
+    {%- endfor %} {%- endif %}
+</small>
+{%- endif %} {% if page.extra.archive %}
+<div class="statement-container archive">
+    <strong class="big">
+        <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M4 1a1 1 0 0 0-.926.625l-2 5A1 1 0 0 0 1 7v7s0 2 2 2h10s2 0 2-2l.004-6.937c0-.149-.004-.297-.074-.438l-2-5A1 1 0 0 0 12 1zm.676 2h6.644l1.203 3h-9.05zM7 8h2v3h2a1 1 0 0 1-.293.707l-2 2a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1-.285-.7L5 11h2zm0 0"
+            />
+        </svg>
+        Archived
+    </strong>
+    {{ page.extra.archive | markdown | safe }}
+</div>
+{% endif %} {% if page.extra.trigger %}
+<div class="statement-container trigger">
+    <strong class="big">
+        <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M7.906.094C7.38.066 6.867.375 6.47 1.063L.219 12.656C-.316 13.621.266 15 1.313 15h13.156c.98 0 1.902-1.16 1.219-2.344L9.375 1.125C8.977.48 8.434.121 7.906.094M9 4v5c.008.527-.473 1-1 1s-1.008-.473-1-1V4zm-1 7c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1m0 0"
+            />
+        </svg>
+        Trigger Warning
+    </strong>
+    {{ page.extra.trigger | markdown | safe }}
+</div>
+{% endif %} {% if page.extra.disclaimer %}
+<div class="statement-container disclaimer">
+    <strong class="big">
+        <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M7.906.094C7.38.066 6.867.375 6.47 1.063L.219 12.656C-.316 13.621.266 15 1.313 15h13.156c.98 0 1.902-1.16 1.219-2.344L9.375 1.125C8.977.48 8.434.121 7.906.094M9 4v5c.008.527-.473 1-1 1s-1.008-.473-1-1V4zm-1 7c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1m0 0"
+            />
+        </svg>
+        Disclaimer(s)
+    </strong>
+    {{ page.extra.disclaimer | markdown | safe }}
+</div>
+{% endif %} {% if page.extra.toc %}
+<h2>Table of Contents</h2>
+<ul>
+    {% for h1 in page.toc %}
+    <li>
+        <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+        {% if h1.children %}
+        <ul>
+            {% for h2 in h1.children %}
+            <li>
+                <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %} {{ page.content | safe }} {% if page.extra.comments.id %} {% include
+"partials/comments.html" %} {% endif %} {% if page.lower or page.higher %}
+<hr />
+<nav id="post-nav">
+    {% if page.higher %}
+    <a class="post-nav-item post-nav-prev" href="{{ page.higher.permalink }}">
+        <div class="nav-arrow">← Previous</div>
+        <span class="post-title">{{ page.higher.title }}</span>
+    </a>
+    {% endif %} {% if page.lower %}
+    <a class="post-nav-item post-nav-next" href="{{ page.lower.permalink }}">
+        <div class="nav-arrow">Next →</div>
+        <span class="post-title">{{ page.lower.title }}</span>
+    </a>
+    {% endif %}
+</nav>
+{% endif %}
+
+<p class="dialog-buttons">
+    <a class="inline-button" href="#top">Go to Top</a>
+    {% if config.extra.issues_url %}
+    <a class="inline-button colored" href="{{ config.extra.issues_url }}"
+        >File an Issue</a
+    >
+    {% endif %}
+</p>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% set image = resize_image(path=path, width=width, height=height, op="fill",
+format="webp") %}
+<img
+    {%
+    if
+    full
+    or
+    pixels
+    or
+    transparent
+    or
+    no_hover
+    %}
+    class="{% if full %}full{% endif %}{% if pixels %} pixels{% endif %}{% if transparent %} transparent{% endif %}{% if no_hover %} no-hover{% endif %}"
+    {%
+    endif
+    %}
+    src="{{ image.url }}"
+    alt="{{ body }}"
+    width="{{ width }}"
+    height="{{ height }}"
+/>

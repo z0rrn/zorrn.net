@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block content %} {% if page.extra.archive %}
+<div class="statement-container archive">
+    <strong class="big">
+        <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M4 1a1 1 0 0 0-.926.625l-2 5A1 1 0 0 0 1 7v7s0 2 2 2h10s2 0 2-2l.004-6.937c0-.149-.004-.297-.074-.438l-2-5A1 1 0 0 0 12 1zm.676 2h6.644l1.203 3h-9.05zM7 8h2v3h2a1 1 0 0 1-.293.707l-2 2a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1-.285-.7L5 11h2zm0 0"
+            />
+        </svg>
+        Archived
+    </strong>
+    {{ page.extra.archive | markdown | safe }}
+</div>
+{% endif %} {{ page.content | safe }} {% endblock content %}
