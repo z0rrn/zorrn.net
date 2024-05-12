@@ -1,7 +1,7 @@
-title = "Frederik's Blog"
+title = "Frederik Zorn's Blog"
 # !! Set same value in Justfile otherwise it has no effect !!
 base_url = "https://www.zorrn.net"
-description = "Frederik Zorn's blog and nonsense site"
+description = "Frederik Zorn's blog and no-nonsense site"
 
 # Specify theme (name the directory under ./themes/)
 #theme = "duckquill"
@@ -46,8 +46,8 @@ primary_color_alpha = "rgba(98, 146, 146, 0.2)"
 date_format = "%d %B %Y"
 
 # Issue tracker and source code URL
-#issues_url = ""
-#source_url = ""
+issues_url = "https://github.com/z0rrn/zorrn.net/issues"
+source_url = "https://github.com/z0rrn/zorrn.net"
 
 [extra.nav]
 # Whether to show Atom/RSS feed button in the nav
