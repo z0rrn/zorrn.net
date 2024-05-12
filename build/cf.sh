@@ -9,4 +9,4 @@ source ~/.bash_profile # Reload bash to use `proto` command
 proto use
 
 # Run build script
-just prod
+just url="$CF_PAGES_URL" prod

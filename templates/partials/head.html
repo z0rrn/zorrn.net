@@ -12,7 +12,7 @@
     <meta name="generator" content="Zola" />
     <link
         rel="canonical"
-        href="{{ config.extra.base_url | safe }}{{ current_path | default(value='/') | safe }}"
+        href="{{ current_url | default(value=config.base_url) | safe }}"
     />
 
     <title>

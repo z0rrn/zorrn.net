@@ -1,6 +1,6 @@
 # Justfile to ease development and deployment
 
-# URL variable for Cloudflare deployment (override with `just url="$CF_PAGES_URL" cf`)
+# URL variable for Cloudflare deployment (override with `just url="$CF_PAGES_URL" prod`)
 url := "https://www.zorrn.net"
 
 # List all available commands

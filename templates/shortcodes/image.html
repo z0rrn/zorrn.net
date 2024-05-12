@@ -15,7 +15,7 @@ format="webp") %}
     {%
     endif
     %}
-    src="{{ image.url }}"
+    src="{{ image.url | safe }}"
     alt="{{ body }}"
     width="{{ width }}"
     height="{{ height }}"

@@ -1,5 +1,5 @@
 title = "Frederik's Blog"
-# !! Set same value down under extra and in Justfile otherwise it has no effect !!
+# !! Set same value in Justfile otherwise it has no effect !!
 base_url = "https://www.zorrn.net"
 description = "Frederik Zorn's blog and nonsense site"
 
@@ -30,9 +30,6 @@ highlight_themes_css = [
 [extra]
 # Put all your custom variables here
 keywords = "zorrn, z0rrn, blog, programming, projects, personal"
-
-# Default URL copied from above to get valid canonical URLs
-base_url = "https://www.zorrn.net"
 
 # Variables used by Duckquill Theme (https://codeberg.org/daudix/duckquill) by David Lapshin
 
