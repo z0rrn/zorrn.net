@@ -2,12 +2,21 @@
 
 # Use Bash as shell
 SHELL := /bin/bash
-
 # List all recipes to be non-file targets
-.PHONY: default serve serve-lan check-links lint lint-fix prod clean _build _minify _install-tools
+.PHONY: _default serve serve-lan check-links lint lint-fix proto proto-up production clean _build _minify
 
-# URL variable for Cloudflare deployment (override with `make url="https://example.org" prod`)
-url = https://www.zorrn.net
+# URL variable for Deployment (set to the same as in config.toml)
+# automatically overriden for Cloudflare Preview
+# manually override with `make url="https://example.org" production`
+ifeq ($(CF_PAGES), 1)
+ifeq ($(CF_PAGES_BRANCH), main)
+url := https://www.zorrn.net
+else
+url := $(CF_PAGES_URL)
+endif
+else
+url := https://www.zorrn.net
+endif
 
 _default: # List all available commands (exclude recipes without a comment or a _ infront)
 	@echo "Available recipes:"
@@ -23,36 +32,25 @@ check-links: # Check for broken links
 	zola check
 
 lint: # Check prettiniess of code
-	-bun run lint
+	bun run lint
 
 lint-fix: # Make code pretty
 	bun run lint:fix
 
-prod: clean _build _minify # Build production site (clean, build, minify)
+proto: # Install Prototools
+	proto use
 
-cf: _install-tools _build-cf _minify # Build on Cloudflare Pages
+proto-up: # Update Prototools
+	proto outdated --update
+	proto use
+
+production: clean _build _minify # Build production site
 
 clean: # Delete output directories
 	rm -rf ./public ./public.min
 
-_build: # Production build (set base url, default is same as in config.toml)
+_build: # Production build (use url specifid above)
 	zola build --base-url $(url)
-
-# Use public URL on prod and preview URL on preview
-ifeq ($(CF_PAGES_BRANCH), main)
-_build-cf: # Production build (set base url, default is same as in config.toml)
-	zola build --base-url $(url)
-else
-_build-cf: # Production build (set base url, default is same as in config.toml)
-	zola build --base-url $(CF_PAGES_URL)
-endif
 
 _minify: # Minify production build (copy everything and minify supported fts)
 	minify -arso public.min/ public/
-
-_install-tools: # Install proto and tools in .prototools (because every line is in a subshell)
-	curl -fsSL https://moonrepo.dev/install/proto.sh | bash -s -- --yes
-	echo 'export PATH="/opt/buildhome/.proto/shims:/opt/buildhome/.proto/bin:$$PATH"' >> ~/.bashrc && echo $$PATH
-	echo $$PATH
-	source ~/.bashrc && echo $$PATH
-	proto use
