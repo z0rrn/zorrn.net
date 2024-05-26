@@ -28,3 +28,8 @@
     --primary-color-alpha: rgba(98, 146, 146, 0.2);
     --primary-color: #629292;
 }
+
+/* Keep correct aspect ratio after adding image dimensions. Source: https://jampack.divriots.com/configuration/ */
+:where(img) {
+    height: auto
+}
