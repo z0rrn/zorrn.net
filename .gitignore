@@ -9,3 +9,6 @@ public.min/
 static/processed_images/
 # generated css higlight themes
 static/syntax-theme-base16-ocean-dark.css
+
+# Cloudflare Wrangler cache
+.wrangler/
