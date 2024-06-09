@@ -1,6 +1,6 @@
 +++
 template = "blog.html"
-date = 2024-05-09
+date = 2024-06-08
 title = "My tech and devices"
 [extra]
 keywords = "languages, uses"
@@ -19,8 +19,7 @@ Built with Zola and the Duckquill theme.
 
 ## Devices
 
--   Sony Vaio PCG-81312M (from about 2011 but with 8 gigs of ram running
-    perfectly with XFCE, 2x VSCode and Chrome)
+-   MacBook Air (2022) - my shiny new macbook (my first ever apple device)
 -   Pixel 6a
 
 ## Software

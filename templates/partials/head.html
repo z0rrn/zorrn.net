@@ -93,6 +93,34 @@
 
     <!-- Add TelemetryDeck JS copied from https://telemetrydeck.com/docs/guides/web-setup/-->
     <script data-app-id="288B808C-B1C3-44BF-9799-12FC72149CF0">
-      !function(e){"function"==typeof define&&define.amd?define(e):e()}((function(){"use strict";const e=document.currentScript,t=e.dataset.appId,o=e.dataset.api??"https://nom.telemetrydeck.com/v2/w/",{language:n}=navigator,{location:r={}}=globalThis;((e,t)=>{if(!e)throw new Error(`TelemetryDeck: ${t}`)})(t,'"data-app-id" missing');const i={appID:t,url:r.href,referrer:document.referrer,telemetryClientVersion:"WebSDK 1.0.0",locale:n};(/^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(r.hostname)||"file:"===r.protocol)&&(i.isTestMode=!0),fetch(o,{method:"POST",mode:"cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(i)})}));
+        !(function (e) {
+            "function" == typeof define && define.amd ? define(e) : e();
+        })(function () {
+            "use strict";
+            const e = document.currentScript,
+                t = e.dataset.appId,
+                o = e.dataset.api ?? "https://nom.telemetrydeck.com/v2/w/",
+                { language: n } = navigator,
+                { location: r = {} } = globalThis;
+            ((e, t) => {
+                if (!e) throw new Error(`TelemetryDeck: ${t}`);
+            })(t, '"data-app-id" missing');
+            const i = {
+                appID: t,
+                url: r.href,
+                referrer: document.referrer,
+                telemetryClientVersion: "WebSDK 1.0.0",
+                locale: n,
+            };
+            (/^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(r.hostname) ||
+                "file:" === r.protocol) &&
+                (i.isTestMode = !0),
+                fetch(o, {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(i),
+                });
+        });
     </script>
 </head>

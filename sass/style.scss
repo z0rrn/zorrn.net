@@ -31,5 +31,5 @@
 
 /* Keep correct aspect ratio after adding image dimensions. Source: https://jampack.divriots.com/configuration/ */
 :where(img) {
-    height: auto
+    height: auto;
 }
