@@ -18,7 +18,7 @@
             </li>
             {%- endif %} {% endfor %} {% if config.extra.nav.show_feed %}
             <li id="feed">
-                <a href="{{ get_url(path=config.feed_filename) | safe }}">
+                <a href="{{ get_url(path=config.feed_filenames[0]) | safe }}">
                     <svg
                         viewBox="0 0 16 16"
                         fill="currentColor"

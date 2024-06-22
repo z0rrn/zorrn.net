@@ -12,6 +12,11 @@
     background-color: var(--nav-bg);
     max-width: min(calc(var(--content-width) + 10rem), 90%);
 
+    // Make Nav unsticky on mobile screens to use space efficiently
+    @media only screen and (max-width: 320px) {
+        position: relative;
+    }
+
     nav {
         display: flex;
         flex-wrap: wrap;

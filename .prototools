@@ -1,7 +1,7 @@
-bun = "1.1.10"
-minify = "2.20.31"
-zola = "0.18.0"
+bun = "1.1.15"
+minify = "2.20.34"
+zola = "0.19.0"
 
 [plugins]
-minify = "source:https://raw.githubusercontent.com/z0rrn/proto-plugins/main/minify/plugin.toml"
-zola = "source:https://raw.githubusercontent.com/z0rrn/proto-plugins/main/zola/plugin.toml"
+minify = "https://raw.githubusercontent.com/z0rrn/proto-plugins/main/minify/plugin.toml"
+zola = "https://raw.githubusercontent.com/z0rrn/proto-plugins/main/zola/plugin.toml"
